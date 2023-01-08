@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="Nine.svg"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     showguides="false"
+     inkscape:zoom="0.65186406"
+     inkscape:cx="-142.66778"
+     inkscape:cy="169.51387"
+     inkscape:window-width="1309"
+     inkscape:window-height="799"
+     inkscape:window-x="69"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg5">
+    <inkscape:grid
+       type="xygrid"
+       id="grid400" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="0,-1"
+       id="guide414"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="1,0"
+       id="guide416"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <path
+     d="m 336.384,315.39201 q -35.84,28.672 -80.896,28.672 -60.416,0 -100.864,-47.616 -38.912,-46.08 -38.912,-107.008 0,-61.44 38.912,-107.008003 40.448,-48.128 100.864,-48.128 74.752,0 112.128,77.312003 28.672,59.904 28.672,143.872 0,88.064 -28.16,145.92 -36.864,76.288 -115.712,76.288 -76.8,0 -121.856,-78.848 l 48.128,-28.16 q 28.672,50.688 73.728,50.688 67.072,0 83.968,-105.984 z M 255.488,90.624007 q -36.864,0 -61.44,31.744003 -23.04,29.184 -23.04,67.072 0,37.888 23.04,67.072 24.576,31.744 61.44,31.744 31.232,0 54.272,-24.064 20.48,-21.504 28.16,-53.76 Q 323.072,90.624007 255.488,90.624007 Z"
+     id="path535"
+     inkscape:label="Nine"
+     style="font-size:512px;font-family:'Card Characters';-inkscape-font-specification:'Card Characters, Normal';stroke-width:38.831" />
+</svg>

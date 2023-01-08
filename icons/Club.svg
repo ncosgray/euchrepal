@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="Club.svg"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="0.65186406"
+     inkscape:cx="163.37762"
+     inkscape:cy="230.87636"
+     inkscape:window-width="1309"
+     inkscape:window-height="799"
+     inkscape:window-x="69"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg5">
+    <inkscape:grid
+       type="xygrid"
+       id="grid400" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="0,-1"
+       id="guide414"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="1,0"
+       id="guide416"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <path
+     d="m 256,18.175985 q 2.048,14.848 58.88,86.527995 36.864,45.568 73.728,91.136 27.136,37.376 36.864,63.488 11.264,30.208 11.264,72.192 0,35.328 -20.48,61.952 -22.528,29.184 -56.832,29.184 -34.304,0 -56.32,-28.16 -20.48,-26.112 -20.48,-61.44 h -12.288 q 0,38.4 9.728,78.336 10.752,43.52 29.184,73.216 H 202.752 q 38.912,-61.44 38.912,-151.552 h -12.288 q 0,35.328 -20.48,61.44 -22.016,28.16 -56.32,28.16 -34.304,0 -56.832,-29.184 -20.48,-26.624 -20.48,-61.952 0,-41.984 11.264,-72.192 9.728,-26.112 36.864,-63.488 36.864,-45.568 73.728,-91.136 Q 253.952,33.023985 256,18.175985 Z"
+     id="path532"
+     style="font-size:512px;font-family:'Card Characters';-inkscape-font-specification:'Card Characters, Normal';stroke-width:38.831"
+     inkscape:label="Club" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1" />
+</svg>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   sodipodi:docname="Heart.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="0.65186406"
+     inkscape:cx="-32.215306"
+     inkscape:cy="232.41042"
+     inkscape:window-width="1309"
+     inkscape:window-height="799"
+     inkscape:window-x="69"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid400" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="0,-1"
+       id="guide414"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="1,0"
+       id="guide416"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="m 163.84,30.463985 q -41.472,0 -67.072,38.912 -23.04,33.791995 -23.04,77.823995 0,45.568 37.888,109.568 14.336,24.576 78.336,114.176 49.664,70.144 66.048,110.592 16.384,-40.448 66.048,-110.592 64,-89.6 78.336,-114.176 37.888,-64 37.888,-109.568 0,-44.032 -23.04,-77.823995 -25.6,-38.912 -67.072,-38.912 -40.96,0 -66.048,37.376 -22.528,32.767995 -22.528,75.775995 h -7.68 q 0,-43.008 -22.016,-75.775995 -25.088,-37.376 -66.048,-37.376 z"
+       style="font-size:512px;font-family:'Card Characters';-inkscape-font-specification:'Card Characters, Normal';fill:#f44336;stroke-width:38.831"
+       id="path434"
+       inkscape:label="Heart" />
+  </g>
+</svg>

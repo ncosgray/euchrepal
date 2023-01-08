@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="Diamond.svg"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="0.65186406"
+     inkscape:cx="51.391083"
+     inkscape:cy="232.41042"
+     inkscape:window-width="1309"
+     inkscape:window-height="799"
+     inkscape:window-x="69"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid400" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="0,-1"
+       id="guide414"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="1,0"
+       id="guide416"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="M 88.064,255.74398 Q 179.2,175.35998 256,29.951985 332.8,175.35998 423.936,255.74398 332.8,336.12798 256,481.53598 179.2,336.12798 88.064,255.74398 Z"
+       id="path468"
+       style="font-size:512px;font-family:'Card Characters';-inkscape-font-specification:'Card Characters, Normal';fill:#f44336;stroke-width:38.831"
+       inkscape:label="Diamond" />
+  </g>
+</svg>

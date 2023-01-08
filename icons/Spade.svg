@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="Spade.svg"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="0.65186406"
+     inkscape:cx="51.391083"
+     inkscape:cy="232.41042"
+     inkscape:window-width="1309"
+     inkscape:window-height="799"
+     inkscape:window-x="69"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid400" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="0,-1"
+       id="guide414"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="256,256"
+       orientation="1,0"
+       id="guide416"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="m 378.88,216.83198 q 39.424,0 67.584,28.672 28.16,28.16 28.16,67.584 0,39.424 -28.16,67.584 -28.16,28.16 -67.584,28.16 -35.84,0 -63.488,-23.552 -27.136,-24.064 -31.744,-59.904 h -13.312 q 2.048,90.624 38.912,149.504 H 202.752 q 36.864,-58.88 38.912,-149.504 h -13.312 q -4.608,35.84 -32.256,59.904 -27.136,23.552 -62.976,23.552 -39.424,0 -67.584,-28.16 -28.16,-28.16 -28.16,-67.584 0,-39.424 28.16,-67.584 28.16,-28.672 67.584,-28.672 37.888,0 65.536,26.112 l 9.216,-15.872 q -24.064,-13.312 -38.4,-37.376 -14.336,-24.064 -14.336,-51.2 0,-41.471995 29.696,-71.167995 29.696,-29.696 71.168,-29.696 41.472,0 71.168,29.696 29.696,29.696 29.696,71.167995 0,27.136 -14.336,51.2 -14.336,24.064 -38.4,37.376 l 9.216,15.872 q 27.648,-26.112 65.536,-26.112 z"
+       id="path500"
+       style="font-size:512px;font-family:'Card Characters';-inkscape-font-specification:'Card Characters, Normal';stroke-width:38.831"
+       inkscape:label="Spade" />
+  </g>
+</svg>
