@@ -8,6 +8,9 @@ The app can also display the card hierarchy to remind new players which are the 
 
 Let us know what you think of the app -- and have fun playing Euchre!
 
+<img src="https://github.com/ncosgray/euchrepal/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="200"/>|<img src="https://github.com/ncosgray/euchrepal/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="200"/>
+-|-
+
 ### About
 
 EuchrePal is a free, open-source mobile app licensed under the terms of the BSD license and built on the [Flutter](https://flutter.dev) framework.
