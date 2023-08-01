@@ -19,7 +19,7 @@ import 'package:euchrepal/suit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 // Shared preferences keys
 const prefSuit = 'currentSuit';
@@ -59,7 +59,10 @@ class _HomePageState extends State<HomePage> {
             // Settings button
             IconButton(
               icon: SvgPicture.asset('icons/Ellipsis.svg',
-                  color: Theme.of(context).primaryIconTheme.color),
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).primaryIconTheme.color!,
+                    BlendMode.srcIn,
+                  )),
               onPressed: () => _showSettingsDialog(),
             ),
           ],
@@ -154,12 +157,12 @@ class _HomePageState extends State<HomePage> {
       if (newSuit == _currentSuit) {
         // Clear trump and release wakelock
         _currentSuit = Suit.none;
-        Wakelock.disable();
+        WakelockPlus.disable();
       } else {
         // Set trump and ensure the device screen does not turn off
         _currentSuit = newSuit;
         if (_keepScreenOn) {
-          Wakelock.enable();
+          WakelockPlus.enable();
         }
       }
       _saveSettings();
@@ -200,7 +203,11 @@ class _HomePageState extends State<HomePage> {
 
     return hierarchy.keys
         .map((card) => _card(
-            card: SvgPicture.asset(hierarchy[card]!, color: suit.color),
+            card: SvgPicture.asset(hierarchy[card]!,
+                colorFilter: ColorFilter.mode(
+                  suit.color!,
+                  BlendMode.srcIn,
+                )),
             suit: card == 'L' ? suit.companionSuit : suit))
         .toList();
   }
