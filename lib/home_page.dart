@@ -52,6 +52,13 @@ class _HomePageState extends State<HomePage> {
     bool isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
 
+    // Ensure the device screen does not turn off
+    if (_keepScreenOn) {
+      WakelockPlus.enable();
+    } else {
+      WakelockPlus.disable();
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: Text(Str.appName),
@@ -113,6 +120,14 @@ class _HomePageState extends State<HomePage> {
         )));
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+
+    // Release wakelock
+    WakelockPlus.disable();
+  }
+
   // Load settings from shared preferences
   void _loadSettings() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -155,15 +170,9 @@ class _HomePageState extends State<HomePage> {
   void _setSuit(Suit newSuit) {
     setState(() {
       if (newSuit == _currentSuit) {
-        // Clear trump and release wakelock
         _currentSuit = Suit.none;
-        WakelockPlus.disable();
       } else {
-        // Set trump and ensure the device screen does not turn off
         _currentSuit = newSuit;
-        if (_keepScreenOn) {
-          WakelockPlus.enable();
-        }
       }
       _saveSettings();
     });
