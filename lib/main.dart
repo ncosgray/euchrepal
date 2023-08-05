@@ -32,13 +32,32 @@ class EuchrePalApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // Define color themes
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        useMaterial3: true,
+        colorSchemeSeed: Colors.green,
+        textTheme: Typography.blackMountainView,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.green,
+          foregroundColor: Colors.white,
+        ),
+        cardTheme: const CardTheme(
+          color: Colors.white,
+          surfaceTintColor: Colors.white,
+        ),
         brightness: Brightness.light,
       ),
       darkTheme: ThemeData(
-        primarySwatch: Colors.green,
-        toggleableActiveColor: Colors.green,
-        cardTheme: const CardTheme(color: Colors.grey),
+        useMaterial3: true,
+        colorSchemeSeed: Colors.green,
+        textTheme: Typography.whiteMountainView,
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.green.shade900,
+          foregroundColor: Colors.white,
+        ),
+        cardTheme: CardTheme(
+          color: Colors.grey.shade700,
+          surfaceTintColor: Colors.white,
+        ),
         brightness: Brightness.dark,
       ),
     );

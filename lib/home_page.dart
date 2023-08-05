@@ -65,17 +65,22 @@ class _HomePageState extends State<HomePage> {
           actions: <Widget>[
             // Settings button
             IconButton(
-              icon: SvgPicture.asset('icons/Ellipsis.svg',
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).primaryIconTheme.color!,
-                    BlendMode.srcIn,
-                  )),
+              icon: SvgPicture.asset(
+                'icons/Ellipsis.svg',
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).appBarTheme.foregroundColor!,
+                  BlendMode.srcIn,
+                ),
+                width: 25.0,
+                height: 25.0,
+              ),
               onPressed: () => _showSettingsDialog(),
             ),
           ],
         ),
-        body: Center(
-            child: SingleChildScrollView(
+        body: SafeArea(
+            child: Center(
+                child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -117,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                               : []))),
             ],
           ),
-        )));
+        ))));
   }
 
   @override
