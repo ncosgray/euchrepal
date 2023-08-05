@@ -1,0 +1,2 @@
+* Improvements to the app's look and feel.
+* Always keep the screen on, even if no suit is selected.
