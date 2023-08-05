@@ -15,14 +15,14 @@
 
 class Str {
   static String get appName => 'EuchrePal';
-  static String get suitHeader => 'What\'s Trump?';
+  static String get suitHeader => 'What\u2019s Trump?';
   static String get suitHeaderSanitized => 'Current Suit';
   static String get settingsHeader => '${Str.appName} Settings';
-  static String get settingsSanitize => 'Don\'t say "trump"';
+  static String get settingsSanitize => 'Don\u2019t say \u201ctrump\u201d';
   static String get settingsHierarchy => 'Show card hierarchy';
   static String get settingsWakelock => 'Keep screen on';
   static String get aboutText => '${Str.appName} is a free, open-source app'
-      ' inspired by Alex Mysliwiec\'s Euchre Block.';
+      ' inspired by Alex Mysliwiec\u2019s Euchre Block.';
   static String get copyrightText => '\u00a9 Nathan Cosgray';
   static String get okButton => 'OK';
 }
