@@ -159,6 +159,7 @@ class _HomePageState extends State<HomePage> {
   Card _suitButton(Suit suit) {
     return Card(
         margin: const EdgeInsets.all(8.0),
+        clipBehavior: Clip.antiAlias,
         // Background color indicates current trump
         color: _currentSuit == suit ? Colors.yellow[200] : null,
         // Tappable suit icon
