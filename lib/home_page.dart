@@ -71,84 +71,92 @@ class _HomePageState extends State<HomePage> {
     }
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(Str.appName),
-          actions: <Widget>[
-            // Settings button
-            tutorialTooltip(
-              context: context,
-              key: tutorialKey3,
-              showArrow: true,
-              bottomPosition: true,
-              child: IconButton(
-                icon: SvgPicture.asset(
-                  'icons/Ellipsis.svg',
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).appBarTheme.foregroundColor!,
-                    BlendMode.srcIn,
-                  ),
-                  width: 25.0,
-                  height: 25.0,
+      appBar: AppBar(
+        title: Text(Str.appName),
+        actions: <Widget>[
+          // Settings button
+          tutorialTooltip(
+            context: context,
+            key: tutorialKey3,
+            showArrow: true,
+            bottomPosition: true,
+            child: IconButton(
+              icon: SvgPicture.asset(
+                'icons/Ellipsis.svg',
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).appBarTheme.foregroundColor!,
+                  BlendMode.srcIn,
                 ),
-                onPressed: () => _showSettingsDialog(),
+                width: 25.0,
+                height: 25.0,
               ),
+              onPressed: () => _showSettingsDialog(),
             ),
-          ],
-        ),
-        body: SafeArea(
-            child: Center(
-                child: SingleChildScrollView(
-                    child: tutorialTooltip(
-          context: context,
-          key: tutorialKey1,
-          showArrow: false,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // Header for suit selection
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  _sanitizeTrump ? Str.suitHeaderSanitized : Str.suitHeader,
-                  style: const TextStyle(fontSize: 32.0),
-                ),
-              ),
-              // Grid of suit options
-              tutorialTooltip(
-                context: context,
-                key: tutorialKey2,
-                showArrow: true,
-                child: GridView.count(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                    // 2x2 or 1x4 layout based on orientation and app settings
-                    crossAxisCount: isPortrait ? 2 : 4,
-                    childAspectRatio: isPortrait
-                        ? 1.0
-                        : _showHierarchy
-                            ? 1.5
-                            : 1.1,
-                    children: <Widget>[
-                      _suitButton(Suit.hearts),
-                      _suitButton(Suit.diamonds),
-                      _suitButton(Suit.spades),
-                      _suitButton(Suit.clubs),
-                    ]),
-              ),
-              // Suit card hierarchy
-              Container(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: tutorialTooltip(
+              context: context,
+              key: tutorialKey1,
+              showArrow: false,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // Header for suit selection
+                  Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      _sanitizeTrump ? Str.suitHeaderSanitized : Str.suitHeader,
+                      style: const TextStyle(fontSize: 32.0),
+                    ),
+                  ),
+                  // Grid of suit options
+                  tutorialTooltip(
+                    context: context,
+                    key: tutorialKey2,
+                    showArrow: true,
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      // 2x2 or 1x4 layout based on orientation and app settings
+                      crossAxisCount: isPortrait ? 2 : 4,
+                      childAspectRatio: isPortrait
+                          ? 1.0
+                          : _showHierarchy
+                              ? 1.5
+                              : 1.1,
+                      children: <Widget>[
+                        _suitButton(Suit.hearts),
+                        _suitButton(Suit.diamonds),
+                        _suitButton(Suit.spades),
+                        _suitButton(Suit.clubs),
+                      ],
+                    ),
+                  ),
+                  // Suit card hierarchy
+                  Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
                       // Hide if setting is turned off
                       height: _showHierarchy ? 88.0 : 0.0,
                       child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: _currentSuit != Suit.none && _showHierarchy
-                              ? _suitHierarchy(_currentSuit)
-                              : []))),
-            ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: _currentSuit != Suit.none && _showHierarchy
+                            ? _suitHierarchy(_currentSuit)
+                            : [],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        )))));
+        ),
+      ),
+    );
   }
 
   @override
@@ -182,18 +190,20 @@ class _HomePageState extends State<HomePage> {
   // Button for a suit
   Card _suitButton(Suit suit) {
     return Card(
-        margin: const EdgeInsets.all(8.0),
-        clipBehavior: Clip.antiAlias,
-        // Background color indicates current trump
-        color: _currentSuit == suit ? Colors.yellow[200] : null,
-        // Tappable suit icon
-        child: InkWell(
-            child: Opacity(
-                opacity: _currentSuit == suit || _currentSuit == Suit.none
-                    ? 1.0
-                    : 0.2,
-                child: SizedBox.expand(child: FittedBox(child: suit.icon))),
-            onTap: () => _setSuit(suit)));
+      margin: const EdgeInsets.all(8.0),
+      clipBehavior: Clip.antiAlias,
+      // Background color indicates current trump
+      color: _currentSuit == suit ? Colors.yellow[200] : null,
+      // Tappable suit icon
+      child: InkWell(
+        child: Opacity(
+          opacity:
+              _currentSuit == suit || _currentSuit == Suit.none ? 1.0 : 0.2,
+          child: SizedBox.expand(child: FittedBox(child: suit.icon)),
+        ),
+        onTap: () => _setSuit(suit),
+      ),
+    );
   }
 
   // Set or clear the current trump suit
@@ -211,20 +221,23 @@ class _HomePageState extends State<HomePage> {
   // Playing card widget
   Card _card({required Widget card, required Suit suit}) {
     return Card(
-        margin: const EdgeInsets.all(4.0),
-        shape: RoundedRectangleBorder(
-            side: const BorderSide(color: Colors.grey, width: 1.0),
-            borderRadius: BorderRadius.circular(2.0)),
-        child: Container(
-            padding: const EdgeInsets.all(4.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              // Card and suit
-              children: [
-                SizedBox(width: 36.0, height: 36.0, child: card),
-                SizedBox(width: 28.0, height: 28.0, child: suit.icon),
-              ],
-            )));
+      margin: const EdgeInsets.all(4.0),
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(color: Colors.grey, width: 1.0),
+        borderRadius: BorderRadius.circular(2.0),
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(4.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          // Card and suit
+          children: [
+            SizedBox(width: 36.0, height: 36.0, child: card),
+            SizedBox(width: 28.0, height: 28.0, child: suit.icon),
+          ],
+        ),
+      ),
+    );
   }
 
   // Euchre card hierarchy
@@ -236,17 +249,22 @@ class _HomePageState extends State<HomePage> {
       'K': 'icons/King.svg',
       'Q': 'icons/Queen.svg',
       '10': 'icons/Ten.svg',
-      '9': 'icons/Nine.svg'
+      '9': 'icons/Nine.svg',
     };
 
     return hierarchy.keys
-        .map((card) => _card(
-            card: SvgPicture.asset(hierarchy[card]!,
-                colorFilter: ColorFilter.mode(
-                  suit.color!,
-                  BlendMode.srcIn,
-                )),
-            suit: card == 'L' ? suit.companionSuit : suit))
+        .map(
+          (card) => _card(
+            card: SvgPicture.asset(
+              hierarchy[card]!,
+              colorFilter: ColorFilter.mode(
+                suit.color!,
+                BlendMode.srcIn,
+              ),
+            ),
+            suit: card == 'L' ? suit.companionSuit : suit,
+          ),
+        )
         .toList();
   }
 
@@ -269,11 +287,13 @@ class _HomePageState extends State<HomePage> {
 
   // Settings text item
   Text _settingsText(String title) {
-    return Text(title,
-        style: const TextStyle(
-          color: Colors.grey,
-          fontSize: 14.0,
-        ));
+    return Text(
+      title,
+      style: const TextStyle(
+        color: Colors.grey,
+        fontSize: 14.0,
+      ),
+    );
   }
 
   // Settings dialog
@@ -281,14 +301,15 @@ class _HomePageState extends State<HomePage> {
     return showDialog<void>(
       context: context,
       builder: (_) {
-        return StatefulBuilder(builder: (_, setDialogState) {
-          return AlertDialog(
-            title: Text(Str.settingsHeader),
-            content: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[
-                  // Sanitize Trump option
-                  _settingsSwitch(
+        return StatefulBuilder(
+          builder: (_, setDialogState) {
+            return AlertDialog(
+              title: Text(Str.settingsHeader),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[
+                    // Sanitize Trump option
+                    _settingsSwitch(
                       title: Str.settingsSanitize,
                       value: _sanitizeTrump,
                       onChanged: (bool newValue) {
@@ -296,9 +317,10 @@ class _HomePageState extends State<HomePage> {
                           _sanitizeTrump = newValue;
                           _saveSettings();
                         });
-                      }),
-                  // Card hierarchy option
-                  _settingsSwitch(
+                      },
+                    ),
+                    // Card hierarchy option
+                    _settingsSwitch(
                       title: Str.settingsHierarchy,
                       value: _showHierarchy,
                       onChanged: (bool newValue) {
@@ -306,9 +328,10 @@ class _HomePageState extends State<HomePage> {
                           _showHierarchy = newValue;
                           _saveSettings();
                         });
-                      }),
-                  // Wakelock option
-                  _settingsSwitch(
+                      },
+                    ),
+                    // Wakelock option
+                    _settingsSwitch(
                       title: Str.settingsWakelock,
                       value: _keepScreenOn,
                       onChanged: (bool newValue) {
@@ -316,25 +339,27 @@ class _HomePageState extends State<HomePage> {
                           _keepScreenOn = newValue;
                           _saveSettings();
                         });
-                      }),
-                  // About text
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: _settingsText(Str.aboutText),
-                    subtitle: _settingsText(Str.copyrightText),
-                  ),
-                ],
+                      },
+                    ),
+                    // About text
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: _settingsText(Str.aboutText),
+                      subtitle: _settingsText(Str.copyrightText),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            actions: <Widget>[
-              // OK button
-              TextButton(
-                child: Text(Str.okButton),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ],
-          );
-        });
+              actions: <Widget>[
+                // OK button
+                TextButton(
+                  child: Text(Str.okButton),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            );
+          },
+        );
       },
     );
   }
