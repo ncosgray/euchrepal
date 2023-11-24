@@ -26,7 +26,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  package_info_plus: fd030dabf36271f146f1f3beacd48f564b0f17f7
+  package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
   wakelock_plus: 8b09852c8876491e4b6d179e17dfe2a0b5f60d47
 
