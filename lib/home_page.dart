@@ -188,7 +188,6 @@ class _HomePageState extends State<HomePage> {
   Card _card({required Widget card, required Suit suit}) {
     return Card(
         margin: const EdgeInsets.all(4.0),
-        color: Colors.white,
         shape: RoundedRectangleBorder(
             side: const BorderSide(color: Colors.grey, width: 1.0),
             borderRadius: BorderRadius.circular(2.0)),

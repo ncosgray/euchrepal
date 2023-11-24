@@ -35,6 +35,7 @@ class EuchrePalApp extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.green,
         textTheme: Typography.blackMountainView,
+        scaffoldBackgroundColor: Colors.green.shade200,
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.green,
           foregroundColor: Colors.white,
@@ -49,13 +50,13 @@ class EuchrePalApp extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.green,
         textTheme: Typography.whiteMountainView,
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: Colors.green.shade900,
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.green.shade900,
+          backgroundColor: Colors.green.shade800,
           foregroundColor: Colors.white,
         ),
         cardTheme: CardTheme(
-          color: Colors.grey.shade700,
+          color: Colors.grey.shade300,
           surfaceTintColor: Colors.white,
         ),
         brightness: Brightness.dark,
