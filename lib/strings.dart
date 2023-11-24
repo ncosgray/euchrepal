@@ -25,4 +25,12 @@ class Str {
       ' inspired by Alex Mysliwiec\u2019s Euchre Block.';
   static String get copyrightText => '\u00a9 Nathan Cosgray';
   static String get okButton => 'OK';
+  static String get tutorial1 => 'Welcome to ${Str.appName}, a simple companion'
+      ' app for your Euchre games.';
+  static String get tutorial2 =>
+      '''Keep track of trump by tapping a suit button on your screen every time a player calls it.
+
+  As you play tricks, just glance at the screen for a reminder of what trump is!''';
+  static String get tutorial3 => 'Tap the menu icon for a few app settings you'
+      ' can change.';
 }

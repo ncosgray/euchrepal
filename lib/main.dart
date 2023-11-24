@@ -16,8 +16,17 @@ import 'package:euchrepal/home_page.dart';
 import 'package:euchrepal/strings.dart';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:showcaseview/showcaseview.dart';
 
-void main() {
+// Globals
+late SharedPreferences prefs;
+
+void main() async {
+  // Shared preferences
+  WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
+
   runApp(const EuchrePalApp());
 }
 
@@ -27,6 +36,14 @@ class EuchrePalApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, child) {
+        return ShowCaseWidget(
+          autoPlay: false,
+          builder: Builder(
+            builder: (context) => child!,
+          ),
+        );
+      },
       title: Str.appName,
       home: const HomePage(),
       debugShowCheckedModeBanner: false,

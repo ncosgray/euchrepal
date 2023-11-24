@@ -13,12 +13,14 @@
 // EuchrePal
 // - Build app interface
 
+import 'package:euchrepal/main.dart';
 import 'package:euchrepal/strings.dart';
 import 'package:euchrepal/suit.dart';
+import 'package:euchrepal/tutorial.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:showcaseview/showcaseview.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 // Shared preferences keys
@@ -26,6 +28,7 @@ const prefSuit = 'currentSuit';
 const prefSanitize = 'sanitizeTrump';
 const prefHierarchy = 'showHierarchy';
 const prefWakelock = 'keepScreenOn';
+const prefTutorial = 'showTutorial';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,6 +48,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _loadSettings();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Start a tutorial for new users
+      if (prefs.getBool(prefTutorial) ?? true) {
+        ShowCaseWidget.of(context).startShowCase(tutorialSteps.keys.toList());
+        prefs.setBool(prefTutorial, false);
+      }
+    });
   }
 
   @override
@@ -64,23 +75,33 @@ class _HomePageState extends State<HomePage> {
           title: Text(Str.appName),
           actions: <Widget>[
             // Settings button
-            IconButton(
-              icon: SvgPicture.asset(
-                'icons/Ellipsis.svg',
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).appBarTheme.foregroundColor!,
-                  BlendMode.srcIn,
+            tutorialTooltip(
+              context: context,
+              key: tutorialKey3,
+              showArrow: true,
+              bottomPosition: true,
+              child: IconButton(
+                icon: SvgPicture.asset(
+                  'icons/Ellipsis.svg',
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).appBarTheme.foregroundColor!,
+                    BlendMode.srcIn,
+                  ),
+                  width: 25.0,
+                  height: 25.0,
                 ),
-                width: 25.0,
-                height: 25.0,
+                onPressed: () => _showSettingsDialog(),
               ),
-              onPressed: () => _showSettingsDialog(),
             ),
           ],
         ),
         body: SafeArea(
             child: Center(
                 child: SingleChildScrollView(
+                    child: tutorialTooltip(
+          context: context,
+          key: tutorialKey1,
+          showArrow: false,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -93,22 +114,27 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               // Grid of suit options
-              GridView.count(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  // 2x2 or 1x4 layout based on orientation and app settings
-                  crossAxisCount: isPortrait ? 2 : 4,
-                  childAspectRatio: isPortrait
-                      ? 1.0
-                      : _showHierarchy
-                          ? 1.5
-                          : 1.1,
-                  children: <Widget>[
-                    _suitButton(Suit.hearts),
-                    _suitButton(Suit.diamonds),
-                    _suitButton(Suit.spades),
-                    _suitButton(Suit.clubs),
-                  ]),
+              tutorialTooltip(
+                context: context,
+                key: tutorialKey2,
+                showArrow: true,
+                child: GridView.count(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    // 2x2 or 1x4 layout based on orientation and app settings
+                    crossAxisCount: isPortrait ? 2 : 4,
+                    childAspectRatio: isPortrait
+                        ? 1.0
+                        : _showHierarchy
+                            ? 1.5
+                            : 1.1,
+                    children: <Widget>[
+                      _suitButton(Suit.hearts),
+                      _suitButton(Suit.diamonds),
+                      _suitButton(Suit.spades),
+                      _suitButton(Suit.clubs),
+                    ]),
+              ),
               // Suit card hierarchy
               Container(
                   padding: const EdgeInsets.all(8.0),
@@ -122,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                               : []))),
             ],
           ),
-        ))));
+        )))));
   }
 
   @override
@@ -134,8 +160,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Load settings from shared preferences
-  void _loadSettings() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  void _loadSettings() {
     setState(() {
       _currentSuit = Suit.values[prefs.getInt(prefSuit) ?? _currentSuit.value];
       _sanitizeTrump = prefs.getBool(prefSanitize) ?? _sanitizeTrump;
@@ -145,8 +170,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Save settings to shared preferences
-  void _saveSettings() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  void _saveSettings() {
     setState(() {
       prefs.setInt(prefSuit, _currentSuit.value);
       prefs.setBool(prefSanitize, _sanitizeTrump);
