@@ -99,60 +99,64 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            child: tutorialTooltip(
-              context: context,
-              key: tutorialKey1,
-              showArrow: false,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // Header for suit selection
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      _sanitizeTrump ? Str.suitHeaderSanitized : Str.suitHeader,
-                      style: const TextStyle(fontSize: 32.0),
-                    ),
-                  ),
-                  // Grid of suit options
-                  tutorialTooltip(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                // Header for suit selection
+                tutorialTooltip(
+                  context: context,
+                  key: tutorialKey1,
+                  showArrow: false,
+                  bottomPosition: true,
+                  child: tutorialTooltip(
                     context: context,
                     key: tutorialKey2,
-                    showArrow: true,
-                    child: GridView.count(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                      // 2x2 or 1x4 layout based on orientation and app settings
-                      crossAxisCount: isPortrait ? 2 : 4,
-                      childAspectRatio: isPortrait
-                          ? 1.0
-                          : _showHierarchy
-                              ? 1.5
-                              : 1.1,
-                      children: <Widget>[
-                        _suitButton(Suit.hearts),
-                        _suitButton(Suit.diamonds),
-                        _suitButton(Suit.spades),
-                        _suitButton(Suit.clubs),
-                      ],
-                    ),
-                  ),
-                  // Suit card hierarchy
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      // Hide if setting is turned off
-                      height: _showHierarchy ? 88.0 : 0.0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: _currentSuit != Suit.none && _showHierarchy
-                            ? _suitHierarchy(_currentSuit)
-                            : [],
+                    showArrow: false,
+                    bottomPosition: true,
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        _sanitizeTrump
+                            ? Str.suitHeaderSanitized
+                            : Str.suitHeader,
+                        style: const TextStyle(fontSize: 32.0),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                // Grid of suit options
+                GridView.count(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  // 2x2 or 1x4 layout based on orientation and app settings
+                  crossAxisCount: isPortrait ? 2 : 4,
+                  childAspectRatio: isPortrait
+                      ? 1.0
+                      : _showHierarchy
+                          ? 1.5
+                          : 1.1,
+                  children: <Widget>[
+                    _suitButton(Suit.hearts),
+                    _suitButton(Suit.diamonds),
+                    _suitButton(Suit.spades),
+                    _suitButton(Suit.clubs),
+                  ],
+                ),
+                // Suit card hierarchy
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    // Hide if setting is turned off
+                    height: _showHierarchy ? 88.0 : 0.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: _currentSuit != Suit.none && _showHierarchy
+                          ? _suitHierarchy(_currentSuit)
+                          : [],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
