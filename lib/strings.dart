@@ -21,20 +21,21 @@ class Str {
   static String get settingsSanitize => 'Don\u2019t say \u201ctrump\u201d';
   static String get settingsHierarchy => 'Show card hierarchy';
   static String get settingsWakelock => 'Keep screen on';
-  static String get aboutText => '${Str.appName} is a free, open-source app'
-      ' inspired by Alex Mysliwiec\u2019s Euchre Block.';
+  static String get replayTutorial => 'Replay app tutorial';
   static String get rulesText => 'Euchre rules';
   static String get rulesURL => 'https://bicyclecards.com/how-to-play/euchre';
   static String get gitHubText => 'GitHub source';
   static String get gitHubURL => 'https://github.com/ncosgray/euchrepal';
+  static String get aboutText =>
+      '${Str.appName} is a free, open-source app inspired by Alex Mysliwiec\u2019s Euchre Block.';
   static String get copyrightText => '\u00a9 Nathan Cosgray';
   static String get okButton => 'OK';
-  static String get tutorial1 => 'Welcome to ${Str.appName}, a simple companion'
-      ' app for your Euchre games.';
+  static String get tutorial1 =>
+      'Welcome to ${Str.appName}, a simple companion app for your Euchre games.';
   static String get tutorial2 =>
       '''Keep track of trump by tapping a suit button on your screen every time a player calls it.
 
-  As you play tricks, just glance at the screen for a reminder of what trump is!''';
-  static String get tutorial3 => 'Tap the menu icon for a few app settings you'
-      ' can change.';
+As you play tricks, just glance at the screen for a reminder of what trump is!''';
+  static String get tutorial3 =>
+      'Tap the menu icon for some app settings you can change.';
 }

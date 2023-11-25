@@ -286,6 +286,34 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // Settings text button
+  InkWell _settingsButton({
+    required String title,
+    required Function()? onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        title: Row(
+          children: [
+            Text(
+              title,
+              style: const TextStyle(fontSize: 16.0),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Icon(
+                Icons.replay,
+                size: 16.0,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   // Settings external link
   InkWell _settingsLink({
     required String title,
@@ -371,6 +399,15 @@ class _HomePageState extends State<HomePage> {
                           _keepScreenOn = newValue;
                           _saveSettings();
                         });
+                      },
+                    ),
+                    // Replay tutorial
+                    _settingsButton(
+                      title: Str.replayTutorial,
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        ShowCaseWidget.of(context)
+                            .startShowCase(tutorialSteps.keys.toList());
                       },
                     ),
                     // Euchre rules link
