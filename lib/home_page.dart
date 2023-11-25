@@ -21,6 +21,7 @@ import 'package:euchrepal/tutorial.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:showcaseview/showcaseview.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 // Shared preferences keys
@@ -278,10 +279,41 @@ class _HomePageState extends State<HomePage> {
       contentPadding: EdgeInsets.zero,
       title: Text(
         title,
-        style: const TextStyle(fontSize: 18.0),
+        style: const TextStyle(fontSize: 16.0),
       ),
       value: value,
       onChanged: onChanged,
+    );
+  }
+
+  // Settings external link
+  InkWell _settingsLink({
+    required String title,
+    required String url,
+  }) {
+    return InkWell(
+      onTap: () => launchUrl(
+        Uri.parse(url),
+        mode: LaunchMode.externalApplication,
+      ),
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        title: Row(
+          children: [
+            Text(
+              title,
+              style: const TextStyle(fontSize: 16.0),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Icon(
+                Icons.launch,
+                size: 16.0,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -291,7 +323,7 @@ class _HomePageState extends State<HomePage> {
       title,
       style: const TextStyle(
         color: Colors.grey,
-        fontSize: 14.0,
+        fontSize: 12.0,
       ),
     );
   }
@@ -341,6 +373,10 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                     ),
+                    // Euchre rules link
+                    _settingsLink(title: Str.rulesText, url: Str.rulesURL),
+                    // GitHub link
+                    _settingsLink(title: Str.gitHubText, url: Str.gitHubURL),
                     // About text
                     ListTile(
                       contentPadding: EdgeInsets.zero,
