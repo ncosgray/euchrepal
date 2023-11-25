@@ -24,7 +24,7 @@ class Str {
   static String get replayTutorial => 'Replay app tutorial';
   static String get rulesText => 'Euchre rules';
   static String get rulesURL => 'https://bicyclecards.com/how-to-play/euchre';
-  static String get gitHubText => 'GitHub source';
+  static String get gitHubText => '${Str.appName} source code';
   static String get gitHubURL => 'https://github.com/ncosgray/euchrepal';
   static String get aboutText =>
       '${Str.appName} is a free, open-source app inspired by Alex Mysliwiec\u2019s Euchre Block.';

@@ -326,6 +326,7 @@ class _HomePageState extends State<HomePage> {
       ),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
+        dense: true,
         title: Row(
           children: [
             Text(
@@ -340,6 +341,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ],
+        ),
+        subtitle: Text(
+          Uri.parse(url).host,
+          style: const TextStyle(
+            color: Colors.grey,
+            fontSize: 10.0,
+          ),
         ),
       ),
     );
