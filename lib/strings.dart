@@ -32,10 +32,10 @@ class Str {
   static String get okButton => 'OK';
   static String get tutorial1 =>
       'Welcome to ${Str.appName}, a simple companion app for your Euchre games.';
-  static String get tutorial2 =>
-      '''Keep track of trump by tapping a suit button on your screen every time a player calls it.
-
-As you play tricks, just glance at the screen for a reminder of what trump is!''';
+  static String get tutorial2 => '''Here\u2019s how to use this app:
+1. Put your device where everyone can see the screen.
+2. Keep track of trump by tapping a suit button whenever a player calls it.
+3. As you play tricks, just glance at the screen for a reminder of what trump is!''';
   static String get tutorial3 =>
       'Tap the menu icon for some app settings you can change.';
 }
