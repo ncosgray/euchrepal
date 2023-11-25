@@ -21,10 +21,10 @@ import 'package:showcaseview/showcaseview.dart';
 final GlobalKey tutorialKey1 = GlobalKey();
 final GlobalKey tutorialKey2 = GlobalKey();
 final GlobalKey tutorialKey3 = GlobalKey();
-Map<GlobalKey, List<String>> tutorialSteps = {
-  tutorialKey1: [Str.tutorial1],
-  tutorialKey2: [Str.tutorial2],
-  tutorialKey3: [Str.tutorial3],
+Map<GlobalKey, String> tutorialSteps = {
+  tutorialKey1: Str.tutorial1,
+  tutorialKey2: Str.tutorial2,
+  tutorialKey3: Str.tutorial3,
 };
 
 // Define a tutorial tooltip
@@ -38,16 +38,19 @@ Widget tutorialTooltip({
   if (tutorialSteps.containsKey(key)) {
     return Showcase(
       key: key,
-      description: tutorialSteps[key]![0],
+      title:
+          '(${tutorialSteps.keys.toList().indexOf(key) + 1}/${tutorialSteps.length})',
+      titleTextStyle:
+          TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+      description: tutorialSteps[key],
       descTextStyle: TextStyle(
-        color: Theme.of(context).colorScheme.onSecondaryContainer,
+        color: Theme.of(context).colorScheme.onPrimary,
       ),
       tooltipPosition:
           bottomPosition ? TooltipPosition.bottom : TooltipPosition.top,
-      tooltipBackgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+      tooltipBackgroundColor: Theme.of(context).colorScheme.primary,
       showArrow: showArrow,
       overlayOpacity: 0.0,
-      blurValue: showArrow ? 2.5 : 0.0,
       disableMovingAnimation: false,
       disableScaleAnimation: false,
       scaleAnimationAlignment: Alignment.center,
