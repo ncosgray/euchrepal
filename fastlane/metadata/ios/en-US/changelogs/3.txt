@@ -1,0 +1,3 @@
+* Show a brief tutorial the first time the app is launched.
+* Added some links to useful sites.
+* Improvements to the app's look and feel.
