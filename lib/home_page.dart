@@ -194,7 +194,11 @@ class _HomePageState extends State<HomePage> {
       margin: const EdgeInsets.all(8.0),
       clipBehavior: Clip.antiAlias,
       // Background color indicates current trump
-      color: _currentSuit == suit ? Colors.yellow[200] : null,
+      color: _currentSuit == suit
+          ? Colors.yellow[200]
+          : MediaQuery.of(context).platformBrightness == Brightness.dark
+              ? Theme.of(context).cardTheme.color?.withOpacity(0.2)
+              : null,
       // Tappable suit icon
       child: InkWell(
         child: Opacity(
@@ -357,10 +361,7 @@ class _HomePageState extends State<HomePage> {
   Text _settingsText(String title) {
     return Text(
       title,
-      style: const TextStyle(
-        color: Colors.grey,
-        fontSize: 12.0,
-      ),
+      style: const TextStyle(fontSize: 12.0),
     );
   }
 
