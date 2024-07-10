@@ -87,15 +87,7 @@ class _HomePageState extends State<HomePage> {
             showArrow: true,
             bottomPosition: true,
             child: IconButton(
-              icon: SvgPicture.asset(
-                'icons/Ellipsis.svg',
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).appBarTheme.foregroundColor!,
-                  BlendMode.srcIn,
-                ),
-                width: 25.0,
-                height: 25.0,
-              ),
+              icon: const Icon(Icons.more_horiz),
               onPressed: () => _showSettingsDialog(),
             ),
           ),
