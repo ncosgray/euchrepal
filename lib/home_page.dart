@@ -74,6 +74,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(Str.appName),
+        // Reset button
+        leading: IconButton(
+          icon: const Icon(Icons.replay_circle_filled),
+          onPressed: () => _setSuit(),
+        ),
         actions: <Widget>[
           // Settings button
           tutorialTooltip(
@@ -216,9 +221,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Set or clear the current trump suit
-  void _setSuit(Suit newSuit) {
+  void _setSuit([Suit? newSuit]) {
     setState(() {
-      if (newSuit == _currentSuit) {
+      if (newSuit == null || newSuit == _currentSuit) {
         _currentSuit = Suit.none;
       } else {
         _currentSuit = newSuit;
