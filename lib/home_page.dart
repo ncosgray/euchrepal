@@ -294,6 +294,7 @@ class _HomePageState extends State<HomePage> {
   // Settings text button
   InkWell _settingsButton({
     required String title,
+    required IconData icon,
     required Function()? onTap,
   }) {
     return InkWell(
@@ -306,10 +307,10 @@ class _HomePageState extends State<HomePage> {
               title,
               style: const TextStyle(fontSize: 16.0),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 12.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0),
               child: Icon(
-                Icons.replay,
+                icon,
                 size: 16.0,
               ),
             ),
@@ -414,6 +415,7 @@ class _HomePageState extends State<HomePage> {
                     // Replay tutorial
                     _settingsButton(
                       title: Str.replayTutorial,
+                      icon: Icons.slideshow,
                       onTap: () {
                         Navigator.of(context).pop();
                         ShowCaseWidget.of(context)
