@@ -1,0 +1,1 @@
+* Support for Dark and Tinted icons in iOS 18.
