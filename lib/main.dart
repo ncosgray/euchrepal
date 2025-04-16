@@ -4,7 +4,7 @@
  Class:    main.dart
  Author:   Nathan Cosgray | https://www.nathanatos.com
  -------------------------------------------------------------------------------
- Copyright (c) 2023-2024 Nathan Cosgray. All rights reserved.
+ Copyright (c) 2023 Nathan Cosgray. All rights reserved.
 
  This source code is licensed under the BSD-style license found in LICENSE.txt.
  *******************************************************************************
@@ -37,10 +37,7 @@ class EuchrePalApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       builder: (context, child) {
-        return ShowCaseWidget(
-          autoPlay: false,
-          builder: (context) => child!,
-        );
+        return ShowCaseWidget(autoPlay: false, builder: (context) => child!);
       },
       title: Str.appName,
       home: const HomePage(),

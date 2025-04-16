@@ -4,7 +4,7 @@
  Class:    home_page.dart
  Author:   Nathan Cosgray | https://www.nathanatos.com
  -------------------------------------------------------------------------------
- Copyright (c) 2023-2024 Nathan Cosgray. All rights reserved.
+ Copyright (c) 2023 Nathan Cosgray. All rights reserved.
 
  This source code is licensed under the BSD-style license found in LICENSE.txt.
  *******************************************************************************
@@ -127,9 +127,10 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   // 2x2 or 1x4 layout based on orientation and app settings
                   crossAxisCount: isPortrait ? 2 : 4,
-                  childAspectRatio: isPortrait
-                      ? 1.0
-                      : _showHierarchy
+                  childAspectRatio:
+                      isPortrait
+                          ? 1.0
+                          : _showHierarchy
                           ? 1.5
                           : 1.1,
                   children: <Widget>[
@@ -147,9 +148,10 @@ class _HomePageState extends State<HomePage> {
                     height: _showHierarchy ? 88.0 : 0.0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: _currentSuit != Suit.none && _showHierarchy
-                          ? _suitHierarchy(_currentSuit)
-                          : [],
+                      children:
+                          _currentSuit != Suit.none && _showHierarchy
+                              ? _suitHierarchy(_currentSuit)
+                              : [],
                     ),
                   ),
                 ),
@@ -195,10 +197,11 @@ class _HomePageState extends State<HomePage> {
       margin: const EdgeInsets.all(8.0),
       clipBehavior: Clip.antiAlias,
       // Background color indicates current trump
-      color: _currentSuit == suit
-          ? Colors.yellow[200]
-          : MediaQuery.of(context).platformBrightness == Brightness.dark
-              ? Theme.of(context).cardTheme.color?.withOpacity(0.2)
+      color:
+          _currentSuit == suit
+              ? Colors.yellow[200]
+              : MediaQuery.of(context).platformBrightness == Brightness.dark
+              ? Theme.of(context).cardTheme.color?.withValues(alpha: 0.2)
               : null,
       // Tappable suit icon
       child: InkWell(
@@ -263,10 +266,7 @@ class _HomePageState extends State<HomePage> {
           (card) => _card(
             card: SvgPicture.asset(
               hierarchy[card]!,
-              colorFilter: ColorFilter.mode(
-                suit.color!,
-                BlendMode.srcIn,
-              ),
+              colorFilter: ColorFilter.mode(suit.color!, BlendMode.srcIn),
             ),
             suit: card == 'L' ? suit.companionSuit : suit,
           ),
@@ -282,10 +282,7 @@ class _HomePageState extends State<HomePage> {
   }) {
     return SwitchListTile.adaptive(
       contentPadding: EdgeInsets.zero,
-      title: Text(
-        title,
-        style: const TextStyle(fontSize: 16.0),
-      ),
+      title: Text(title, style: const TextStyle(fontSize: 16.0)),
       value: value,
       onChanged: onChanged,
     );
@@ -303,16 +300,10 @@ class _HomePageState extends State<HomePage> {
         contentPadding: EdgeInsets.zero,
         title: Row(
           children: [
-            Text(
-              title,
-              style: const TextStyle(fontSize: 16.0),
-            ),
+            Text(title, style: const TextStyle(fontSize: 16.0)),
             Padding(
               padding: const EdgeInsets.only(left: 12.0),
-              child: Icon(
-                icon,
-                size: 16.0,
-              ),
+              child: Icon(icon, size: 16.0),
             ),
           ],
         ),
@@ -321,39 +312,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Settings external link
-  InkWell _settingsLink({
-    required String title,
-    required String url,
-  }) {
+  InkWell _settingsLink({required String title, required String url}) {
     return InkWell(
-      onTap: () => launchUrl(
-        Uri.parse(url),
-        mode: LaunchMode.externalApplication,
-      ),
+      onTap:
+          () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
         dense: true,
         title: Row(
           children: [
-            Text(
-              title,
-              style: const TextStyle(fontSize: 16.0),
-            ),
+            Text(title, style: const TextStyle(fontSize: 16.0)),
             const Padding(
               padding: EdgeInsets.only(left: 12.0),
-              child: Icon(
-                Icons.launch,
-                size: 16.0,
-              ),
+              child: Icon(Icons.launch, size: 16.0),
             ),
           ],
         ),
         subtitle: Text(
           Uri.parse(url).host,
-          style: const TextStyle(
-            color: Colors.grey,
-            fontSize: 10.0,
-          ),
+          style: const TextStyle(color: Colors.grey, fontSize: 10.0),
         ),
       ),
     );
@@ -361,10 +338,7 @@ class _HomePageState extends State<HomePage> {
 
   // Settings text item
   Text _settingsText(String title) {
-    return Text(
-      title,
-      style: const TextStyle(fontSize: 12.0),
-    );
+    return Text(title, style: const TextStyle(fontSize: 12.0));
   }
 
   // Settings dialog
@@ -418,8 +392,9 @@ class _HomePageState extends State<HomePage> {
                       icon: Icons.slideshow,
                       onTap: () {
                         Navigator.of(context).pop();
-                        ShowCaseWidget.of(context)
-                            .startShowCase(tutorialSteps.keys.toList());
+                        ShowCaseWidget.of(
+                          context,
+                        ).startShowCase(tutorialSteps.keys.toList());
                       },
                     ),
                     // Euchre rules link
