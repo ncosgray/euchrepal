@@ -201,7 +201,7 @@ class _HomePageState extends State<HomePage> {
           _currentSuit == suit
               ? Colors.yellow[200]
               : MediaQuery.of(context).platformBrightness == Brightness.dark
-              ? Theme.of(context).cardTheme.color?.withOpacity(0.2)
+              ? Theme.of(context).cardTheme.color?.withValues(alpha: 0.2)
               : null,
       // Tappable suit icon
       child: InkWell(
