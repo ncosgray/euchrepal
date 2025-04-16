@@ -37,10 +37,7 @@ class EuchrePalApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       builder: (context, child) {
-        return ShowCaseWidget(
-          autoPlay: false,
-          builder: (context) => child!,
-        );
+        return ShowCaseWidget(autoPlay: false, builder: (context) => child!);
       },
       title: Str.appName,
       home: const HomePage(),

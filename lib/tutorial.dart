@@ -40,12 +40,11 @@ Widget tutorialTooltip({
       key: key,
       title:
           '(${tutorialSteps.keys.toList().indexOf(key) + 1}/${tutorialSteps.length})',
-      titleTextStyle:
-          TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
-      description: tutorialSteps[key],
-      descTextStyle: TextStyle(
-        color: Theme.of(context).colorScheme.onPrimary,
+      titleTextStyle: TextStyle(
+        color: Theme.of(context).colorScheme.inversePrimary,
       ),
+      description: tutorialSteps[key],
+      descTextStyle: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
       tooltipPosition:
           bottomPosition ? TooltipPosition.bottom : TooltipPosition.top,
       tooltipBackgroundColor: Theme.of(context).colorScheme.primary,
