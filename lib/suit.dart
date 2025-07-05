@@ -33,7 +33,7 @@ enum Suit {
   const Suit(this.value);
 
   // Suit icons
-  get icon {
+  Widget get icon {
     switch (value) {
       case 1:
         return heartIcon;
@@ -42,12 +42,13 @@ enum Suit {
       case 3:
         return spadeIcon;
       case 4:
+      default:
         return clubIcon;
     }
   }
 
   // Suit colors
-  get color {
+  Color get color {
     switch (value) {
       case 1:
         return const Color(0xfff44336);
@@ -56,12 +57,13 @@ enum Suit {
       case 3:
         return Colors.black;
       case 4:
+      default:
         return Colors.black;
     }
   }
 
   // Companion suits
-  get companionSuit {
+  Suit get companionSuit {
     switch (value) {
       case 1:
         return Suit.diamonds;
@@ -70,6 +72,7 @@ enum Suit {
       case 3:
         return Suit.clubs;
       case 4:
+      default:
         return Suit.spades;
     }
   }

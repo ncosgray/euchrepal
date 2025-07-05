@@ -45,8 +45,9 @@ Widget tutorialTooltip({
       ),
       description: tutorialSteps[key],
       descTextStyle: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
-      tooltipPosition:
-          bottomPosition ? TooltipPosition.bottom : TooltipPosition.top,
+      tooltipPosition: bottomPosition
+          ? TooltipPosition.bottom
+          : TooltipPosition.top,
       tooltipBackgroundColor: Theme.of(context).colorScheme.primary,
       showArrow: showArrow,
       overlayOpacity: 0.0,
