@@ -127,12 +127,11 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   // 2x2 or 1x4 layout based on orientation and app settings
                   crossAxisCount: isPortrait ? 2 : 4,
-                  childAspectRatio:
-                      isPortrait
-                          ? 1.0
-                          : _showHierarchy
-                          ? 1.5
-                          : 1.1,
+                  childAspectRatio: isPortrait
+                      ? 1.0
+                      : _showHierarchy
+                      ? 1.5
+                      : 1.1,
                   children: <Widget>[
                     _suitButton(Suit.hearts),
                     _suitButton(Suit.diamonds),
@@ -148,10 +147,9 @@ class _HomePageState extends State<HomePage> {
                     height: _showHierarchy ? 88.0 : 0.0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:
-                          _currentSuit != Suit.none && _showHierarchy
-                              ? _suitHierarchy(_currentSuit)
-                              : [],
+                      children: _currentSuit != Suit.none && _showHierarchy
+                          ? _suitHierarchy(_currentSuit)
+                          : [],
                     ),
                   ),
                 ),
@@ -197,17 +195,17 @@ class _HomePageState extends State<HomePage> {
       margin: const EdgeInsets.all(8.0),
       clipBehavior: Clip.antiAlias,
       // Background color indicates current trump
-      color:
-          _currentSuit == suit
-              ? Colors.yellow[200]
-              : MediaQuery.of(context).platformBrightness == Brightness.dark
-              ? Theme.of(context).cardTheme.color?.withValues(alpha: 0.2)
-              : null,
+      color: _currentSuit == suit
+          ? Colors.yellow[200]
+          : MediaQuery.of(context).platformBrightness == Brightness.dark
+          ? Theme.of(context).cardTheme.color?.withValues(alpha: 0.2)
+          : null,
       // Tappable suit icon
       child: InkWell(
         child: Opacity(
-          opacity:
-              _currentSuit == suit || _currentSuit == Suit.none ? 1.0 : 0.2,
+          opacity: _currentSuit == suit || _currentSuit == Suit.none
+              ? 1.0
+              : 0.2,
           child: SizedBox.expand(child: FittedBox(child: suit.icon)),
         ),
         onTap: () => _setSuit(suit),
@@ -266,7 +264,7 @@ class _HomePageState extends State<HomePage> {
           (card) => _card(
             card: SvgPicture.asset(
               hierarchy[card]!,
-              colorFilter: ColorFilter.mode(suit.color!, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(suit.color, BlendMode.srcIn),
             ),
             suit: card == 'L' ? suit.companionSuit : suit,
           ),
@@ -314,8 +312,8 @@ class _HomePageState extends State<HomePage> {
   // Settings external link
   InkWell _settingsLink({required String title, required String url}) {
     return InkWell(
-      onTap:
-          () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
+      onTap: () =>
+          launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
       child: ListTile(
         contentPadding: EdgeInsets.zero,
         dense: true,

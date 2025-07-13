@@ -52,7 +52,7 @@ class EuchrePalApp extends StatelessWidget {
           backgroundColor: Colors.green,
           foregroundColor: Colors.white,
         ),
-        cardTheme: const CardTheme(
+        cardTheme: const CardThemeData(
           color: Colors.white,
           surfaceTintColor: Colors.white,
         ),
@@ -67,7 +67,7 @@ class EuchrePalApp extends StatelessWidget {
           backgroundColor: Color.fromARGB(255, 0, 45, 0),
           foregroundColor: Colors.white,
         ),
-        cardTheme: const CardTheme(
+        cardTheme: const CardThemeData(
           color: Colors.white,
           surfaceTintColor: Colors.white,
         ),
