@@ -1,0 +1,1 @@
+euchrepal,euchre,card game,cards,trump,suit
