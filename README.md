@@ -8,7 +8,7 @@ The app can also display the card hierarchy to remind new players which are the 
 
 Let us know what you think of the app -- and have fun playing Euchre!
 
-<img src="https://github.com/ncosgray/euchrepal/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="200"/>|<img src="https://github.com/ncosgray/euchrepal/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="200"/>
+<img src="https://github.com/ncosgray/euchrepal/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.png" width="200"/>|<img src="https://github.com/ncosgray/euchrepal/blob/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.png" width="200"/>
 -|-
 
 ### Install
