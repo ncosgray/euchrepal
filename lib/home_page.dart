@@ -161,8 +161,8 @@ class _HomePageState extends State<HomePage> {
                           children: <Widget>[
                             _suitButton(Suit.hearts),
                             _suitButton(Suit.diamonds),
-                            _suitButton(Suit.spades),
                             _suitButton(Suit.clubs),
+                            _suitButton(Suit.spades),
                           ],
                         ),
                         // Suit card hierarchy
