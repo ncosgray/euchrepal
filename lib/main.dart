@@ -27,6 +27,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   prefs = await SharedPreferences.getInstance();
 
+  // Register showcase for tutorial
+  ShowcaseView.register();
+
   runApp(const EuchrePalApp());
 }
 
@@ -36,9 +39,6 @@ class EuchrePalApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: (context, child) {
-        return ShowCaseWidget(autoPlay: false, builder: (context) => child!);
-      },
       title: Str.appName,
       home: const HomePage(),
       debugShowCheckedModeBanner: false,

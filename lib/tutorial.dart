@@ -54,7 +54,7 @@ Widget tutorialTooltip({
       disableMovingAnimation: false,
       disableScaleAnimation: false,
       scaleAnimationAlignment: Alignment.center,
-      onToolTipClick: () => ShowCaseWidget.of(context).next(),
+      onToolTipClick: () => ShowcaseView.get().next(),
       child: child,
     );
   } else {

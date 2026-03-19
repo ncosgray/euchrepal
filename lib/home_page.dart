@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // Start a tutorial for new users
       if (prefs.getBool(prefTutorial) ?? true) {
-        ShowCaseWidget.of(context).startShowCase(tutorialSteps.keys.toList());
+        ShowcaseView.get().startShowCase(tutorialSteps.keys.toList());
         prefs.setBool(prefTutorial, false);
       }
     });
@@ -537,9 +537,9 @@ class _HomePageState extends State<HomePage> {
                       icon: Icons.slideshow,
                       onTap: () {
                         Navigator.of(context).pop();
-                        ShowCaseWidget.of(
-                          context,
-                        ).startShowCase(tutorialSteps.keys.toList());
+                        ShowcaseView.get().startShowCase(
+                          tutorialSteps.keys.toList(),
+                        );
                       },
                     ),
                     // Euchre rules link
