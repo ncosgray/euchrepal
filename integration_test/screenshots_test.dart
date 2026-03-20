@@ -60,7 +60,7 @@ Future<void> main() async {
     // Screenshot 2: Suit selected and card hierarchy visible
     await $.tap(find.byType(InkWell).first);
     await $.pumpAndSettle();
-    await $.tap(find.byIcon(Icons.more_horiz));
+    await $.tap(find.byIcon(Icons.settings));
     await $.pumpAndSettle();
     await $.tap(find.text(Str.settingsHierarchy));
     await $.pumpAndSettle();
@@ -70,7 +70,7 @@ Future<void> main() async {
     await binding.takeScreenshot('2-selected');
 
     // Screenshot 4: Settings page
-    await $.tap(find.byIcon(Icons.more_horiz));
+    await $.tap(find.byIcon(Icons.settings));
     await $.pumpAndSettle();
     await $.tap(find.text(Str.settingsScoring));
     await $.pumpAndSettle();

@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
             showArrow: true,
             bottomPosition: true,
             child: IconButton(
-              icon: const Icon(Icons.more_horiz),
+              icon: const Icon(Icons.settings),
               onPressed: () => _showSettingsDialog(),
             ),
           ),

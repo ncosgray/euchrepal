@@ -47,5 +47,5 @@ class Str {
 2. Keep track of trump by tapping a suit button whenever a player calls it.
 3. As you play tricks, just glance at the screen for a reminder of what trump is!''';
   static String get tutorial3 =>
-      'Tap the menu icon for some app settings you can change, such as a team score tracker.';
+      'Tap this icon for some app settings you can change, such as a team score tracker.';
 }
