@@ -22,7 +22,12 @@ import 'package:showcaseview/showcaseview.dart';
 // Globals
 late SharedPreferences prefs;
 
-void main() async {
+void main() {
+  initApp().then((_) => runApp(const EuchrePalApp()));
+}
+
+// Initialize preferences and tutorial
+Future<void> initApp() async {
   // Shared preferences
   WidgetsFlutterBinding.ensureInitialized();
   prefs = await SharedPreferences.getInstance();
