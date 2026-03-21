@@ -22,10 +22,18 @@ import 'package:showcaseview/showcaseview.dart';
 // Globals
 late SharedPreferences prefs;
 
-void main() async {
+void main() {
+  initApp().then((_) => runApp(const EuchrePalApp()));
+}
+
+// Initialize preferences and tutorial
+Future<void> initApp() async {
   // Shared preferences
   WidgetsFlutterBinding.ensureInitialized();
   prefs = await SharedPreferences.getInstance();
+
+  // Register showcase for tutorial
+  ShowcaseView.register();
 
   runApp(const EuchrePalApp());
 }
@@ -36,9 +44,6 @@ class EuchrePalApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: (context, child) {
-        return ShowCaseWidget(autoPlay: false, builder: (context) => child!);
-      },
       title: Str.appName,
       home: const HomePage(),
       debugShowCheckedModeBanner: false,

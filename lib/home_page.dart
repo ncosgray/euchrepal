@@ -14,6 +14,7 @@
 // - Build app interface
 
 import 'package:euchrepal/main.dart';
+import 'package:euchrepal/score_display.dart';
 import 'package:euchrepal/strings.dart';
 import 'package:euchrepal/suit.dart';
 import 'package:euchrepal/tutorial.dart';
@@ -30,6 +31,9 @@ const prefSanitize = 'sanitizeTrump';
 const prefHierarchy = 'showHierarchy';
 const prefWakelock = 'keepScreenOn';
 const prefTutorial = 'showTutorial';
+const prefTeam1Score = 'team1Score';
+const prefTeam2Score = 'team2Score';
+const prefScoring = 'showScoring';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,6 +48,9 @@ class _HomePageState extends State<HomePage> {
   bool _sanitizeTrump = false;
   bool _showHierarchy = false;
   bool _keepScreenOn = true;
+  int _team1Score = 0;
+  int _team2Score = 0;
+  bool _showScoring = false;
 
   @override
   void initState() {
@@ -53,7 +60,7 @@ class _HomePageState extends State<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // Start a tutorial for new users
       if (prefs.getBool(prefTutorial) ?? true) {
-        ShowCaseWidget.of(context).startShowCase(tutorialSteps.keys.toList());
+        ShowcaseView.get().startShowCase(tutorialSteps.keys.toList());
         prefs.setBool(prefTutorial, false);
       }
     });
@@ -77,7 +84,13 @@ class _HomePageState extends State<HomePage> {
         // Reset button
         leading: IconButton(
           icon: const Icon(Icons.replay_circle_filled),
-          onPressed: () => _setSuit(),
+          onPressed: () {
+            if (_team1Score > 0 || _team2Score > 0) {
+              _showResetConfirmation();
+            } else {
+              _setSuit();
+            }
+          },
         ),
         actions: <Widget>[
           // Settings button
@@ -87,75 +100,92 @@ class _HomePageState extends State<HomePage> {
             showArrow: true,
             bottomPosition: true,
             child: IconButton(
-              icon: const Icon(Icons.more_horiz),
+              icon: const Icon(Icons.settings),
               onPressed: () => _showSettingsDialog(),
             ),
           ),
         ],
       ),
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // Header for suit selection
-                tutorialTooltip(
-                  context: context,
-                  key: tutorialKey1,
-                  showArrow: false,
-                  bottomPosition: true,
-                  child: tutorialTooltip(
-                    context: context,
-                    key: tutorialKey2,
-                    showArrow: false,
-                    bottomPosition: true,
-                    child: Container(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        _sanitizeTrump
-                            ? Str.suitHeaderSanitized
-                            : Str.suitHeader,
-                        style: const TextStyle(fontSize: 32.0),
-                      ),
-                    ),
-                  ),
-                ),
-                // Grid of suit options
-                GridView.count(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  // 2x2 or 1x4 layout based on orientation and app settings
-                  crossAxisCount: isPortrait ? 2 : 4,
-                  childAspectRatio: isPortrait
-                      ? 1.0
-                      : _showHierarchy
-                      ? 1.5
-                      : 1.1,
-                  children: <Widget>[
-                    _suitButton(Suit.hearts),
-                    _suitButton(Suit.diamonds),
-                    _suitButton(Suit.spades),
-                    _suitButton(Suit.clubs),
-                  ],
-                ),
-                // Suit card hierarchy
-                Container(
-                  padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            // Score tracker (top-aligned, flex in landscape)
+            if (_showScoring)
+              isPortrait
+                  ? _scoreContainer()
+                  : Expanded(child: Center(child: _scoreContainer())),
+            // Trump suit section (centered in remaining space)
+            Expanded(
+              child: Center(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
                   child: SizedBox(
-                    // Hide if setting is turned off
-                    height: _showHierarchy ? 88.0 : 0.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: _currentSuit != Suit.none && _showHierarchy
-                          ? _suitHierarchy(_currentSuit)
-                          : [],
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        // Header for suit selection
+                        tutorialTooltip(
+                          context: context,
+                          key: tutorialKey1,
+                          showArrow: false,
+                          bottomPosition: true,
+                          child: tutorialTooltip(
+                            context: context,
+                            key: tutorialKey2,
+                            showArrow: false,
+                            bottomPosition: true,
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                _sanitizeTrump
+                                    ? Str.suitHeaderSanitized
+                                    : Str.suitHeader,
+                                style: const TextStyle(fontSize: 32.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Grid of suit options
+                        GridView.count(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                          // 2x2 or 1x4 layout based on orientation
+                          crossAxisCount: isPortrait ? 2 : 4,
+                          childAspectRatio: isPortrait
+                              ? 1.0
+                              : _showHierarchy
+                              ? 1.5
+                              : 1.1,
+                          children: <Widget>[
+                            _suitButton(Suit.hearts),
+                            _suitButton(Suit.diamonds),
+                            _suitButton(Suit.clubs),
+                            _suitButton(Suit.spades),
+                          ],
+                        ),
+                        // Suit card hierarchy
+                        if (_showHierarchy)
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              height: 88.0,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: _currentSuit != Suit.none
+                                    ? _suitHierarchy(_currentSuit)
+                                    : [],
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -176,6 +206,9 @@ class _HomePageState extends State<HomePage> {
       _sanitizeTrump = prefs.getBool(prefSanitize) ?? _sanitizeTrump;
       _showHierarchy = prefs.getBool(prefHierarchy) ?? _showHierarchy;
       _keepScreenOn = prefs.getBool(prefWakelock) ?? _keepScreenOn;
+      _team1Score = prefs.getInt(prefTeam1Score) ?? 0;
+      _team2Score = prefs.getInt(prefTeam2Score) ?? 0;
+      _showScoring = prefs.getBool(prefScoring) ?? false;
     });
   }
 
@@ -186,6 +219,9 @@ class _HomePageState extends State<HomePage> {
       prefs.setBool(prefSanitize, _sanitizeTrump);
       prefs.setBool(prefHierarchy, _showHierarchy);
       prefs.setBool(prefWakelock, _keepScreenOn);
+      prefs.setInt(prefTeam1Score, _team1Score);
+      prefs.setInt(prefTeam2Score, _team2Score);
+      prefs.setBool(prefScoring, _showScoring);
     });
   }
 
@@ -213,6 +249,26 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // Score tracker container
+  Widget _scoreContainer() {
+    return Container(
+      margin: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? Colors.white.withValues(alpha: 0.05)
+            : Colors.black.withValues(alpha: 0.05),
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+      child: ScoreDisplay(
+        team1Score: _team1Score,
+        team2Score: _team2Score,
+        onTeam1Score: (points) => _addScore(1, points),
+        onTeam2Score: (points) => _addScore(2, points),
+      ),
+    );
+  }
+
   // Set or clear the current trump suit
   void _setSuit([Suit? newSuit]) {
     setState(() {
@@ -221,6 +277,86 @@ class _HomePageState extends State<HomePage> {
       } else {
         _currentSuit = newSuit;
       }
+      _saveSettings();
+    });
+  }
+
+  // Confirm before resetting everything
+  Future<void> _showResetConfirmation() {
+    return showDialog<void>(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: Text(Str.resetConfirmation),
+          actions: <Widget>[
+            TextButton(
+              child: Text(Str.cancelButton),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            TextButton(
+              child: Text(Str.resetButton),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _setSuit();
+                _resetScores();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Add points to a team's score
+  void _addScore(int team, int points) {
+    setState(() {
+      if (team == 1) {
+        _team1Score = (_team1Score + points).clamp(0, 10);
+      } else {
+        _team2Score = (_team2Score + points).clamp(0, 10);
+      }
+      _saveSettings();
+    });
+
+    // Check for winner
+    if (_team1Score >= 10 || _team2Score >= 10) {
+      _showWinDialog(_team1Score >= 10 ? 1 : 2);
+    }
+  }
+
+  // Show win dialog
+  Future<void> _showWinDialog(int winningTeam) {
+    String teamName = winningTeam == 1 ? Str.team1Label : Str.team2Label;
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) {
+        return AlertDialog(
+          title: Text(Str.winMessage.replaceAll('{{team}}', teamName)),
+          actions: <Widget>[
+            TextButton(
+              child: Text(Str.newGameButton),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _resetScores();
+                _setSuit();
+              },
+            ),
+            TextButton(
+              child: Text(Str.okButton),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Reset scores for new game
+  void _resetScores() {
+    setState(() {
+      _team1Score = 0;
+      _team2Score = 0;
       _saveSettings();
     });
   }
@@ -351,13 +487,13 @@ class _HomePageState extends State<HomePage> {
               content: SingleChildScrollView(
                 child: ListBody(
                   children: <Widget>[
-                    // Sanitize Trump option
+                    // Score tracker option
                     _settingsSwitch(
-                      title: Str.settingsSanitize,
-                      value: _sanitizeTrump,
+                      title: Str.settingsScoring,
+                      value: _showScoring,
                       onChanged: (bool newValue) {
                         setDialogState(() {
-                          _sanitizeTrump = newValue;
+                          _showScoring = newValue;
                           _saveSettings();
                         });
                       },
@@ -369,6 +505,17 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (bool newValue) {
                         setDialogState(() {
                           _showHierarchy = newValue;
+                          _saveSettings();
+                        });
+                      },
+                    ),
+                    // Sanitize Trump option
+                    _settingsSwitch(
+                      title: Str.settingsSanitize,
+                      value: _sanitizeTrump,
+                      onChanged: (bool newValue) {
+                        setDialogState(() {
+                          _sanitizeTrump = newValue;
                           _saveSettings();
                         });
                       },
@@ -390,9 +537,9 @@ class _HomePageState extends State<HomePage> {
                       icon: Icons.slideshow,
                       onTap: () {
                         Navigator.of(context).pop();
-                        ShowCaseWidget.of(
-                          context,
-                        ).startShowCase(tutorialSteps.keys.toList());
+                        ShowcaseView.get().startShowCase(
+                          tutorialSteps.keys.toList(),
+                        );
                       },
                     ),
                     // Euchre rules link
